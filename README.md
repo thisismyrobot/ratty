@@ -1,15 +1,11 @@
 # Ratty
 
-A PoC RAT to learn a bit about different methods, currently Chrome headless.
+Some DIY PoC 
+[RATs](https://en.wikipedia.org/wiki/Remote_desktop_software#Malicious_variants)
+to teach myself a little about them.
+
+All take the form of a REPL on the CNC side.
 
 For education purposes only.
 
 No really, please don't use this for anything other that educating yourself.
-
-## Commands
-
-Parses commands from URLs in PDFs created from headless Chrome output.
-
-## Exfil
-
-Headless Chrome with GET params.
