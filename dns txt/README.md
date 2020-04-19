@@ -17,5 +17,5 @@ For the CNC server, run:
     pipenv install
     pipenv run python server.py
 
-Each time "rat-chrome.bat" runs on the target, it will get the last command
-queued up in the server and run it, returning the result.
+Each time "rat-dns.bat" runs on the target, it will get the last command
+queued up in the server and run it, returning the result to the server.

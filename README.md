@@ -1,4 +1,4 @@
-# Ratty
+# RATs
 
 Some DIY PoC 
 [RATs](https://en.wikipedia.org/wiki/Remote_desktop_software#Malicious_variants)
